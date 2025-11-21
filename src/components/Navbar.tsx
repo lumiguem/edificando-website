@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
                     <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => handleNavigate('/')}>
                         <HardHat className={`h-8 w-8 mr-2 ${logoClass}`} />
                         <span className={`font-bold text-xl tracking-tight ${logoClass}`}>
-              EDIFIC<span className={scrolled ? 'text-slate-600' : 'text-blue-400'}>IANDO</span>
+              EDIFI<span className={scrolled ? 'text-slate-600' : 'text-blue-400'}>CANDO</span>
             </span>
                     </div>
 

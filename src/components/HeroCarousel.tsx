@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const slides = [
     {
         id: 1,
-        image: 'https://images.unsplash.com/photo-1590644365607-1c5a38d07391?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80',
+        image: 'https://media.istockphoto.com/id/1178531266/photo/two-workers-on-the-scaffolding-plastering-and-renovating-old-building.jpg?s=2048x2048&w=is&k=20&c=-37svHa0jBVexCEm7XvtWBq-WVD33dMzEVwJ8pOJLtA=',
         title: 'Protección Estructural Total',
         subtitle: 'Soluciones avanzadas en impermeabilización para grandes obras civiles.'
     },

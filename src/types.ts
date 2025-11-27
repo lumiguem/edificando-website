@@ -17,8 +17,8 @@ export interface Product {
     precio: number;
     stock: number;
     imagen: string;
-    id_categoria: number;
-    id_marca: number;
+    categoriaId: number;
+    marcaId: number;
 }
 
 export interface ServiceType {
@@ -33,8 +33,10 @@ export interface Service {
     descripcion: string;
     precio: number;
     imagen: string;
-    id_tipo_servicio: number;
+    tipoServicioId: number;
+    tipoServicioNombre: string;
 }
+
 
 export interface ClientType {
     id: number;

@@ -12,7 +12,7 @@ export const PRODUCT_CATEGORIES: Category[] = [
     { id: 6, nombre: 'Anclajes Químicos', descripcion: 'Sistemas de fijación química' },
     { id: 7, nombre: 'Resinas para Inyección', descripcion: 'Resinas epóxicas y poliuretánicas' },
     { id: 8, nombre: 'Revestimientos Industriales', descripcion: 'Protección y acabado de superficies industriales' },
-    { id: 9, nombre: 'Herramientas y Accesorios', descripcion: 'Herramientas y accesorios para la construcción y mantenimiento' },
+    { id: 9, nombre: 'Prueba categoria', descripcion: 'Herramientas y accesorios para la construcción y mantenimiento' },
 ];
 
 // =======================================================
@@ -33,34 +33,34 @@ export const BRANDS: Brand[] = [
 // PRODUCTOS
 // =======================================================
 export const PRODUCTS: Product[] = [
-    { id: 1, nombre: 'SikaTop Seal 107', descripcion: 'Revestimiento impermeabilizante cementoso', precio: 120.00, stock: 50, imagen: 'https://images.unsplash.com/photo-1585821648382-021bf9c09755?auto=format&fit=crop&w=600&q=80', id_categoria: 1, id_marca: 1 },
-    { id: 2, nombre: 'Mapelastic Foundation', descripcion: 'Impermeabilizante flexible bicomponente', precio: 200.00, stock: 30, imagen: 'https://images.unsplash.com/photo-1632759363494-5873152c783a?auto=format&fit=crop&w=600&q=80', id_categoria: 1, id_marca: 7 },
+    { id: 1, nombre: 'SikaTop Seal 107 - prueba', descripcion: 'Revestimiento impermeabilizante cementoso', precio: 120.00, stock: 50, imagen: 'https://images.unsplash.com/photo-1585821648382-021bf9c09755?auto=format&fit=crop&w=600&q=80', categoriaId: 1, marcaId: 1 },
+    { id: 2, nombre: 'Mapelastic Foundation', descripcion: 'Impermeabilizante flexible bicomponente', precio: 200.00, stock: 30, imagen: 'https://images.unsplash.com/photo-1632759363494-5873152c783a?auto=format&fit=crop&w=600&q=80', categoriaId: 1, marcaId: 7 },
 
-    { id: 3, nombre: 'Sikaflex 11FC', descripcion: 'Sellante elástico multipropósito', precio: 45.00, stock: 100, imagen: 'https://images.unsplash.com/photo-1610526023209-77667d669579?auto=format&fit=crop&w=600&q=80', id_categoria: 2, id_marca: 1 },
+    { id: 3, nombre: 'Sikaflex 11FC', descripcion: 'Sellante elástico multipropósito', precio: 45.00, stock: 100, imagen: 'https://images.unsplash.com/photo-1610526023209-77667d669579?auto=format&fit=crop&w=600&q=80', categoriaId: 2, marcaId: 1 },
 
-    { id: 4, nombre: 'Loctite PL Premium', descripcion: 'Adhesivo epóxico de alta resistencia', precio: 65.00, stock: 80, imagen: 'https://images.unsplash.com/photo-1560843723-80d21c369478?auto=format&fit=crop&w=600&q=80', id_categoria: 3, id_marca: 2 },
-    { id: 5, nombre: 'Mapei Eporip', descripcion: 'Adhesivo epóxico para juntas de construcción', precio: 85.00, stock: 60, imagen: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80', id_categoria: 3, id_marca: 7 },
+    { id: 4, nombre: 'Loctite PL Premium', descripcion: 'Adhesivo epóxico de alta resistencia', precio: 65.00, stock: 80, imagen: 'https://images.unsplash.com/photo-1560843723-80d21c369478?auto=format&fit=crop&w=600&q=80', categoriaId: 3, marcaId: 2 },
+    { id: 5, nombre: 'Mapei Eporip', descripcion: 'Adhesivo epóxico para juntas de construcción', precio: 85.00, stock: 60, imagen: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80', categoriaId: 3, marcaId: 7 },
 
-    { id: 6, nombre: 'Sika ViscoCrete', descripcion: 'Aditivo superplastificante para concreto', precio: 150.00, stock: 40, imagen: 'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?auto=format&fit=crop&w=600&q=80', id_categoria: 4, id_marca: 1 },
-    { id: 7, nombre: 'Mapei Dynamon', descripcion: 'Aditivo reductor de agua de alto rango', precio: 135.00, stock: 35, imagen: 'https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&w=600&q=80', id_categoria: 4, id_marca: 7 },
+    { id: 6, nombre: 'Sika ViscoCrete', descripcion: 'Aditivo superplastificante para concreto', precio: 150.00, stock: 40, imagen: 'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?auto=format&fit=crop&w=600&q=80', categoriaId: 4, marcaId: 1 },
+    { id: 7, nombre: 'Mapei Dynamon', descripcion: 'Aditivo reductor de agua de alto rango', precio: 135.00, stock: 35, imagen: 'https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&w=600&q=80', categoriaId: 4, marcaId: 7 },
 
-    { id: 8, nombre: 'SikaGrout 212', descripcion: 'Mortero de relleno de alta resistencia', precio: 90.00, stock: 70, imagen: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=600&q=80', id_categoria: 5, id_marca: 1 },
-    { id: 9, nombre: 'Mapei Planitop 400', descripcion: 'Mortero estructural de reparación', precio: 110.00, stock: 50, imagen: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80', id_categoria: 5, id_marca: 7 },
+    { id: 8, nombre: 'SikaGrout 212', descripcion: 'Mortero de relleno de alta resistencia', precio: 90.00, stock: 70, imagen: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=600&q=80', categoriaId: 5, marcaId: 1 },
+    { id: 9, nombre: 'Mapei Planitop 400', descripcion: 'Mortero estructural de reparación', precio: 110.00, stock: 50, imagen: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80', categoriaId: 5, marcaId: 7 },
 
-    { id: 10, nombre: 'Hilti HIT-HY 200', descripcion: 'Anclaje químico de alto rendimiento', precio: 250.00, stock: 25, imagen: 'https://images.unsplash.com/photo-1534655726872-2524e2781564?auto=format&fit=crop&w=600&q=80', id_categoria: 6, id_marca: 6 },
-    { id: 11, nombre: 'Sika AnchorFix-2', descripcion: 'Resina de anclaje epóxica', precio: 180.00, stock: 30, imagen: 'https://images.unsplash.com/photo-1621905252507-b35a8307ae05?auto=format&fit=crop&w=600&q=80', id_categoria: 6, id_marca: 1 },
+    { id: 10, nombre: 'Hilti HIT-HY 200', descripcion: 'Anclaje químico de alto rendimiento', precio: 250.00, stock: 25, imagen: 'https://images.unsplash.com/photo-1534655726872-2524e2781564?auto=format&fit=crop&w=600&q=80', categoriaId: 6, marcaId: 6 },
+    { id: 11, nombre: 'Sika AnchorFix-2', descripcion: 'Resina de anclaje epóxica', precio: 180.00, stock: 30, imagen: 'https://images.unsplash.com/photo-1621905252507-b35a8307ae05?auto=format&fit=crop&w=600&q=80', categoriaId: 6, marcaId: 1 },
 
-    { id: 12, nombre: 'Sikadur 52', descripcion: 'Resina epóxica de inyección de baja viscosidad', precio: 220.00, stock: 20, imagen: 'https://images.unsplash.com/photo-1635424973729-1c3828274e2d?auto=format&fit=crop&w=600&q=80', id_categoria: 7, id_marca: 1 },
-    { id: 13, nombre: 'Mapei Epojet', descripcion: 'Resina epóxica de inyección', precio: 240.00, stock: 18, imagen: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=600&q=80', id_categoria: 7, id_marca: 7 },
+    { id: 12, nombre: 'Sikadur 52', descripcion: 'Resina epóxica de inyección de baja viscosidad', precio: 220.00, stock: 20, imagen: 'https://images.unsplash.com/photo-1635424973729-1c3828274e2d?auto=format&fit=crop&w=600&q=80', categoriaId: 7, marcaId: 1 },
+    { id: 13, nombre: 'Mapei Epojet', descripcion: 'Resina epóxica de inyección', precio: 240.00, stock: 18, imagen: 'https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=600&q=80', categoriaId: 7, marcaId: 7 },
 
-    { id: 14, nombre: 'SikaFloor 264', descripcion: 'Revestimiento epóxico para pisos industriales', precio: 320.00, stock: 15, imagen: 'https://images.unsplash.com/photo-1635589984536-39a69b1cb2b7?auto=format&fit=crop&w=600&q=80', id_categoria: 8, id_marca: 1 },
-    { id: 15, nombre: 'Mapei Mapecoat I 24', descripcion: 'Revestimiento epóxico protector', precio: 340.00, stock: 12, imagen: 'https://images.unsplash.com/photo-1632121594167-92f9d9385213?auto=format&fit=crop&w=600&q=80', id_categoria: 8, id_marca: 7 },
+    { id: 14, nombre: 'SikaFloor 264', descripcion: 'Revestimiento epóxico para pisos industriales', precio: 320.00, stock: 15, imagen: 'https://images.unsplash.com/photo-1635589984536-39a69b1cb2b7?auto=format&fit=crop&w=600&q=80', categoriaId: 8, marcaId: 1 },
+    { id: 15, nombre: 'Mapei Mapecoat I 24', descripcion: 'Revestimiento epóxico protector', precio: 340.00, stock: 12, imagen: 'https://images.unsplash.com/photo-1632121594167-92f9d9385213?auto=format&fit=crop&w=600&q=80', categoriaId: 8, marcaId: 7 },
 
-    { id: 16, nombre: 'Taladro Percutor Bosch', descripcion: 'Taladro eléctrico para concreto y mampostería', precio: 350.00, stock: 40, imagen: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=600&q=80', id_categoria: 9, id_marca: 3 },
-    { id: 17, nombre: 'Amoladora Angular DeWalt', descripcion: 'Herramienta para corte y desbaste', precio: 280.00, stock: 35, imagen: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=600&q=80', id_categoria: 9, id_marca: 4 },
-    { id: 18, nombre: 'Martillo Demoledor Makita', descripcion: 'Herramienta eléctrica para demolición de concreto', precio: 1200.00, stock: 15, imagen: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=600&q=80', id_categoria: 9, id_marca: 5 },
-    { id: 19, nombre: 'Juego de Llaves Stanley', descripcion: 'Juego de llaves de diferentes medidas', precio: 150.00, stock: 60, imagen: 'https://images.unsplash.com/photo-1616400619175-5beda3a17896?auto=format&fit=crop&w=600&q=80', id_categoria: 9, id_marca: 8 },
-    { id: 20, nombre: 'Nivel Láser Bosch', descripcion: 'Equipo para nivelación de estructuras', precio: 500.00, stock: 20, imagen: 'https://images.unsplash.com/photo-1581147036324-c17ac41dfa6c?auto=format&fit=crop&w=600&q=80', id_categoria: 9, id_marca: 3 },
+    { id: 16, nombre: 'Taladro Percutor Bosch', descripcion: 'Taladro eléctrico para concreto y mampostería', precio: 350.00, stock: 40, imagen: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=600&q=80', categoriaId: 9, marcaId: 3 },
+    { id: 17, nombre: 'Amoladora Angular DeWalt', descripcion: 'Herramienta para corte y desbaste', precio: 280.00, stock: 35, imagen: 'https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=600&q=80', categoriaId: 9, marcaId: 4 },
+    { id: 18, nombre: 'Martillo Demoledor Makita', descripcion: 'Herramienta eléctrica para demolición de concreto', precio: 1200.00, stock: 15, imagen: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=600&q=80', categoriaId: 9, marcaId: 5 },
+    { id: 19, nombre: 'Juego de Llaves Stanley', descripcion: 'Juego de llaves de diferentes medidas', precio: 150.00, stock: 60, imagen: 'https://images.unsplash.com/photo-1616400619175-5beda3a17896?auto=format&fit=crop&w=600&q=80', categoriaId: 9, marcaId: 8 },
+    { id: 20, nombre: 'Nivel Láser Bosch', descripcion: 'Equipo para nivelación de estructuras', precio: 500.00, stock: 20, imagen: 'https://images.unsplash.com/photo-1581147036324-c17ac41dfa6c?auto=format&fit=crop&w=600&q=80', categoriaId: 9, marcaId: 3 },
 ];
 
 // =======================================================
@@ -80,34 +80,34 @@ export const SERVICE_TYPES: ServiceType[] = [
 // =======================================================
 export const SERVICES: Service[] = [
     // Techos
-    { id: 1, nombre: 'Instalación de Techo Aluzinc', descripcion: 'Colocación de techo metálico con protección anticorrosiva', precio: 5000.00, imagen: 'https://images.unsplash.com/photo-1517646287309-985096b288a8?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 1 },
-    { id: 2, nombre: 'Mantenimiento de Techo', descripcion: 'Reparación de filtraciones y limpieza', precio: 2500.00, imagen: 'https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 1 },
-    { id: 3, nombre: 'Instalación de Techo Termoacústico', descripcion: 'Montaje de paneles aislantes', precio: 6000.00, imagen: 'https://images.unsplash.com/photo-1599692223425-232c04e28f24?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 1 },
+    { id: 1, nombre: 'Instalación de Techo Aluzinc', descripcion: 'Colocación de techo metálico con protección anticorrosiva', precio: 5000.00, imagen: 'https://images.unsplash.com/photo-1517646287309-985096b288a8?auto=format&fit=crop&w=800&q=80', tipoServicioId: 1, tipoServicioNombre: '' },
+    { id: 2, nombre: 'Mantenimiento de Techo', descripcion: 'Reparación de filtraciones y limpieza', precio: 2500.00, imagen: 'https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=800&q=80', tipoServicioId: 1, tipoServicioNombre: ''  },
+    { id: 3, nombre: 'Instalación de Techo Termoacústico', descripcion: 'Montaje de paneles aislantes', precio: 6000.00, imagen: 'https://images.unsplash.com/photo-1599692223425-232c04e28f24?auto=format&fit=crop&w=800&q=80', tipoServicioId: 1, tipoServicioNombre: ''  },
 
     // Impermeabilización Estructural
-    { id: 4, nombre: 'Impermeabilización de Losas', descripcion: 'Protección contra filtraciones en losas de concreto', precio: 4000.00, imagen: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 2 },
-    { id: 5, nombre: 'Impermeabilización de Cisternas', descripcion: 'Aplicación de revestimientos impermeables', precio: 3500.00, imagen: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 2 },
-    { id: 6, nombre: 'Impermeabilización de Muros', descripcion: 'Revestimiento impermeable en muros perimetrales', precio: 3000.00, imagen: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 2 },
+    { id: 4, nombre: 'Impermeabilización de Losas', descripcion: 'Protección contra filtraciones en losas de concreto', precio: 4000.00, imagen: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80', tipoServicioId: 2, tipoServicioNombre: ''  },
+    { id: 5, nombre: 'Impermeabilización de Cisternas', descripcion: 'Aplicación de revestimientos impermeables', precio: 3500.00, imagen: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80', tipoServicioId: 2, tipoServicioNombre: ''  },
+    { id: 6, nombre: 'Impermeabilización de Muros', descripcion: 'Revestimiento impermeable en muros perimetrales', precio: 3000.00, imagen: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&w=800&q=80', tipoServicioId: 2, tipoServicioNombre: ''  },
 
     // Reparación
-    { id: 7, nombre: 'Reparación de Concreto Dañado', descripcion: 'Recuperación estructural de columnas y vigas', precio: 7000.00, imagen: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 3 },
-    { id: 8, nombre: 'Protección con Revestimiento Epóxico', descripcion: 'Protección anticorrosiva de superficies', precio: 8000.00, imagen: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 3 },
-    { id: 9, nombre: 'Refuerzo de Estructuras', descripcion: 'Aplicación de fibras de carbono y polímeros', precio: 12000.00, imagen: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 3 },
+    { id: 7, nombre: 'Reparación de Concreto Dañado', descripcion: 'Recuperación estructural de columnas y vigas', precio: 7000.00, imagen: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80', tipoServicioId: 3, tipoServicioNombre: ''  },
+    { id: 8, nombre: 'Protección con Revestimiento Epóxico', descripcion: 'Protección anticorrosiva de superficies', precio: 8000.00, imagen: 'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=800&q=80', tipoServicioId: 3, tipoServicioNombre: ''  },
+    { id: 9, nombre: 'Refuerzo de Estructuras', descripcion: 'Aplicación de fibras de carbono y polímeros', precio: 12000.00, imagen: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80', tipoServicioId: 3, tipoServicioNombre: ''  },
 
     // Juntas
-    { id: 10, nombre: 'Sellado de Juntas de Expansión', descripcion: 'Aplicación de sellante en juntas de expansión', precio: 4500.00, imagen: 'https://images.unsplash.com/photo-1621905252507-b35a8307ae05?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 4 },
-    { id: 11, nombre: 'Reemplazo de Juntas en Pisos', descripcion: 'Reemplazo de juntas deterioradas en pisos industriales', precio: 5000.00, imagen: 'https://images.unsplash.com/photo-1617104424032-b9bd6972d0e4?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 4 },
-    { id: 12, nombre: 'Tratamiento de Juntas de Construcción', descripcion: 'Sellado flexible para juntas de construcción', precio: 4000.00, imagen: 'https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 4 },
+    { id: 10, nombre: 'Sellado de Juntas de Expansión', descripcion: 'Aplicación de sellante en juntas de expansión', precio: 4500.00, imagen: 'https://images.unsplash.com/photo-1621905252507-b35a8307ae05?auto=format&fit=crop&w=800&q=80', tipoServicioId: 4, tipoServicioNombre: ''  },
+    { id: 11, nombre: 'Reemplazo de Juntas en Pisos', descripcion: 'Reemplazo de juntas deterioradas en pisos industriales', precio: 5000.00, imagen: 'https://images.unsplash.com/photo-1617104424032-b9bd6972d0e4?auto=format&fit=crop&w=800&q=80', tipoServicioId: 4, tipoServicioNombre: ''  },
+    { id: 12, nombre: 'Tratamiento de Juntas de Construcción', descripcion: 'Sellado flexible para juntas de construcción', precio: 4000.00, imagen: 'https://images.unsplash.com/photo-1590579491624-f98f36d4c763?auto=format&fit=crop&w=800&q=80', tipoServicioId: 4, tipoServicioNombre: ''  },
 
     // Pisos
-    { id: 13, nombre: 'Instalación de Piso Epóxico', descripcion: 'Revestimiento industrial de alto tráfico', precio: 15000.00, imagen: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 5 },
-    { id: 14, nombre: 'Piso Poliuretano Antideslizante', descripcion: 'Revestimiento resistente a químicos y abrasión', precio: 18000.00, imagen: 'https://images.unsplash.com/photo-1584622412117-b22cb57c0d3b?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 5 },
-    { id: 15, nombre: 'Revestimiento para Estacionamiento', descripcion: 'Pintura y señalización de estacionamientos', precio: 12000.00, imagen: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 5 },
+    { id: 13, nombre: 'Instalación de Piso Epóxico', descripcion: 'Revestimiento industrial de alto tráfico', precio: 15000.00, imagen: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80', tipoServicioId: 5, tipoServicioNombre: ''  },
+    { id: 14, nombre: 'Piso Poliuretano Antideslizante', descripcion: 'Revestimiento resistente a químicos y abrasión', precio: 18000.00, imagen: 'https://images.unsplash.com/photo-1584622412117-b22cb57c0d3b?auto=format&fit=crop&w=800&q=80', tipoServicioId: 5, tipoServicioNombre: ''  },
+    { id: 15, nombre: 'Revestimiento para Estacionamiento', descripcion: 'Pintura y señalización de estacionamientos', precio: 12000.00, imagen: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80', tipoServicioId: 5, tipoServicioNombre: ''  },
 
     // Obras Civiles
-    { id: 16, nombre: 'Construcción de Muros de Concreto', descripcion: 'Ejecución de muros estructurales', precio: 20000.00, imagen: 'https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 6 },
-    { id: 17, nombre: 'Construcción de Losas', descripcion: 'Losas de concreto reforzado', precio: 25000.00, imagen: 'https://images.unsplash.com/photo-1517089596392-fb9c9033a059?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 6 },
-    { id: 18, nombre: 'Obras de Albañilería General', descripcion: 'Construcción de tabiquería y acabados', precio: 15000.00, imagen: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80', id_tipo_servicio: 6 },
+    { id: 16, nombre: 'Construcción de Muros de Concreto', descripcion: 'Ejecución de muros estructurales', precio: 20000.00, imagen: 'https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=800&q=80', tipoServicioId: 6, tipoServicioNombre: ''  },
+    { id: 17, nombre: 'Construcción de Losas', descripcion: 'Losas de concreto reforzado', precio: 25000.00, imagen: 'https://images.unsplash.com/photo-1517089596392-fb9c9033a059?auto=format&fit=crop&w=800&q=80', tipoServicioId: 6, tipoServicioNombre: ''  },
+    { id: 18, nombre: 'Obras de Albañilería General', descripcion: 'Construcción de tabiquería y acabados', precio: 15000.00, imagen: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80', tipoServicioId: 6, tipoServicioNombre: ''  },
 ];
 
 // =======================================================

@@ -1,50 +1,159 @@
-import type {Product, Service, Client, Category, ServiceType, Brand} from '../types';
+import type {Category, ServiceType, Product, Service} from '../types';
 
-// Change this URL to match your Spring Boot backend URL
 const API_BASE_URL = 'http://localhost:8080/api';
 
-// Helper function for handling responses
+// -----------------------------
+// HELPERS
+// -----------------------------
+
+// Maneja respuestas HTTP
 const handleResponse = async (response: Response) => {
     if (!response.ok) {
-        const error = await response.text();
-        throw new Error(error || response.statusText);
+        const errorMessage = await response.text();
+        throw new Error(errorMessage || response.statusText);
     }
     return response.json();
 };
 
-export const api = {
-    // Products
-    getProducts: (): Promise<Product[]> =>
-        fetch(`${API_BASE_URL}/productos`).then(handleResponse),
-
-    getProductCategories: (): Promise<Category[]> =>
-        fetch(`${API_BASE_URL}/categorias`).then(handleResponse),
-
-    getBrands: (): Promise<Brand[]> =>
-        fetch(`${API_BASE_URL}/marcas`).then(handleResponse),
-
-    // Services
-    getServices: (): Promise<Service[]> =>
-        fetch(`${API_BASE_URL}/servicios`).then(handleResponse),
-
-    getServiceTypes: (): Promise<ServiceType[]> =>
-        fetch(`${API_BASE_URL}/tipo-servicio`).then(handleResponse),
-
-    // Clients
-    getClients: (): Promise<Client[]> =>
-        fetch(`${API_BASE_URL}/clientes`).then(handleResponse),
-
-    // Contact
-    sendMessage: (data: { name: string; email: string; phone: string; subject: string; message: string }) => {
-        return fetch(`${API_BASE_URL}/contacto`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        }).then((res) => {
-            if (!res.ok) throw new Error("Error sending message");
-            return res;
-        });
+// Extrae array desde backend SOLO en los formatos válidos
+const extractDataArray = (data: any): any[] => {
+    // Caso paginado: { data: { content: [...] } }
+    if (data?.data?.content && Array.isArray(data.data.content)) {
+        return data.data.content;
     }
+
+    // Caso común: { data: [...] }
+    if (Array.isArray(data?.data)) {
+        return data.data;
+    }
+
+    // ⬅️ NUEVO: backend devolvió un array directo
+    if (Array.isArray(data)) {
+        return data;
+    }
+
+    console.warn("⚠ Backend devolvió un formato inesperado:", data);
+    return [];
+};
+
+
+// Wrapper genérico SOLO para endpoints que devuelven arrays
+const fetchList = async (endpoint: string): Promise<any[]> => {
+    try {
+        const raw = await fetch(`${API_BASE_URL}${endpoint}`).then(handleResponse);
+        return extractDataArray(raw);
+    } catch (err) {
+        console.error(`❌ Error en fetch ${endpoint}:`, err);
+        throw err;
+    }
+};
+
+// -----------------------------
+// API EXPORTADA
+// -----------------------------
+export const api = {
+    // Categorías
+    getProductCategories: (): Promise<Category[]> =>
+        fetchList('/categorias'),
+
+    // Tipos de servicio
+    getServiceTypes: (): Promise<ServiceType[]> =>
+        fetchList('/tiposervicios'),
+
+    // Productos Paginados (page=0, size=1000)
+    getProducts: async (): Promise<Product[]> => {
+        try {
+            const raw = await fetch(`${API_BASE_URL}/productos?page=0&size=1000`)
+                .then(handleResponse);
+
+            return extractDataArray(raw);
+        } catch (err) {
+            console.error("❌ Error obteniendo productos:", err);
+            throw err;
+        }
+    },
+
+    // Productos por categoría (tu backend devuelve { data: [...] })
+    getProductsByCategory: (categoryId: number): Promise<Product[]> =>
+        fetchList(`/productos/categoria/${categoryId}`),
+
+    // Marcas
+    getBrands: (): Promise<any[]> =>
+        fetchList('/marcas'),
+
+    // -----------------------------
+    // PAGINADOS
+    // -----------------------------
+
+    // Productos paginados globales
+    getProductsPaged: async (page: number, size: number) => {
+        const raw = await fetch(`${API_BASE_URL}/productos?page=${page}&size=${size}`)
+            .then(handleResponse);
+
+        // raw.data existe? -> usa raw.data
+        // si no -> usa raw directamente
+        const d = raw.data ?? raw;
+
+        return {
+            items: d.content ?? [],
+            totalPages: d.totalPages ?? 1,
+            page: d.number ?? page,
+            size: d.size ?? size,
+            totalElements: d.totalElements ?? 0
+        };
+    },
+
+
+    // Productos por categoría paginados
+    getProductsByCategoryPaged: async (categoryId: number, page: number, size: number) => {
+        const raw = await fetch(
+            `${API_BASE_URL}/productos/categoria/${categoryId}/paged?page=${page}&size=${size}`
+        ).then(handleResponse);
+
+        const d = raw.data ?? raw;
+
+        return {
+            items: d.content ?? [],
+            totalPages: d.totalPages ?? 1,
+            page: d.number ?? page,
+            size: d.size ?? size,
+            totalElements: d.totalElements ?? 0
+        };
+    },
+
+
+    getServices: (): Promise<Service[]> =>
+        fetchList('/servicios/all'),
+
+
+    getServiciosPaged: async (page: number, size: number) => {
+        const raw = await fetch(`${API_BASE_URL}/servicios?page=${page}&size=${size}`)
+            .then(handleResponse);
+
+        const d = raw.data;
+
+        return {
+            items: d.content,     // <--- ESTO ES LO QUE NECESITA TU COMPONENTE
+            totalPages: d.totalPages,
+            page: d.number,
+            size: d.size,
+            totalElements: d.totalElements
+        };
+    },
+
+    getServiciosByCategoryPaged: async (tipoServicioId: number, page: number, size: number) => {
+        const raw = await fetch(
+            `${API_BASE_URL}/servicios/tiposervicios/${tipoServicioId}/paged?page=${page}&size=${size}`
+        ).then(handleResponse);
+
+        const d = raw.data;
+
+        return {
+            items: d.content,     // <--- ESTO ES LO QUE NECESITA TU COMPONENTE
+            totalPages: d.totalPages,
+            page: d.number,
+            size: d.size,
+            totalElements: d.totalElements
+        };
+    },
 };

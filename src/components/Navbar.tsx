@@ -1,24 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown, HardHat } from 'lucide-react';
-import { PRODUCT_CATEGORIES, SERVICE_TYPES } from '../constants';
+import { api } from '../services/api.ts';
+import type {Category, ServiceType} from "../types.ts";
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [productDropdownOpen, setProductDropdownOpen] = useState(false);
     const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+
+    // State for API data
+    const [categories, setCategories] = useState<Category[]>([]);
+    const [serviceTypes, setServiceTypes] = useState<ServiceType[]>([]);
+
+
     const location = useLocation();
     const navigate = useNavigate();
+    const [showNavbar, setShowNavbar] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
 
+
+    // Fetch menu data from API
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const [catsData, typesData] = await Promise.all([
+                    api.getProductCategories(),
+                    api.getServiceTypes(),
+                ]);
+                if (catsData.length > 0) setCategories(catsData);
+                if (typesData.length > 0) setServiceTypes(typesData);
+            } catch (error) {
+                console.error("Error fetching menu data, using fallback:", error);
+                // Fallback is already initial state
+            }
+        };
+        fetchData();
+    }, []);
     // Handle scroll effect
     useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+            const currentScrollY = window.scrollY;
+
+            // Mostrar navbar si se está haciendo scroll hacia arriba
+            if (currentScrollY < lastScrollY) {
+                setShowNavbar(true);
+            } else {
+                // Ocultar navbar si está scroll hacia abajo
+                if (currentScrollY > 50) {
+                    setShowNavbar(false);
+                }
+            }
+
+            setLastScrollY(currentScrollY);
+            setScrolled(currentScrollY > 20); // Mantiene tu cambio de color
         };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [lastScrollY]);
+
 
     // Close mobile menu on route change
     useEffect(() => {
@@ -41,9 +83,11 @@ const Navbar: React.FC = () => {
         setServiceDropdownOpen(false);
     };
 
-    const navClasses = `fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-lg py-2' : 'bg-slate-900/90 backdrop-blur-md py-4 text-white'
-    }`;
+    const navClasses = `fixed w-full z-50 transition-all duration-700 ease-in-out ${
+        scrolled ? 'bg-white shadow-lg py-2' : 'bg-[#0054a0] backdrop-blur-md py-4 text-white'
+    } ${showNavbar ? 'translate-y-0' : '-translate-y-full'}`;
+
+
 
     const textClass = scrolled ? 'text-slate-800 hover:text-blue-600' : 'text-gray-100 hover:text-blue-300';
     const logoClass = scrolled ? 'text-blue-700' : 'text-white';
@@ -52,9 +96,10 @@ const Navbar: React.FC = () => {
         <nav className={navClasses}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-12">
-                    {/* Logo */}
+
                     <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => handleNavigate('/')}>
-                        <HardHat className={`h-8 w-8 mr-2 ${logoClass}`} />
+                        {/*<img src="img/logo_edificando.png" alt="Edificando" className="h-7"/>*/}
+                        <HardHat className={`h-8 w-8 mr-2 ${logoClass}`}/>
                         <span className={`font-bold text-xl tracking-tight ${logoClass}`}>
               EDIFI<span className={scrolled ? 'text-slate-600' : 'text-blue-400'}>CANDO</span>
             </span>
@@ -74,13 +119,14 @@ const Navbar: React.FC = () => {
                                 onClick={() => handleNavigate('/productos')}
                                 className={`flex items-center font-medium transition-colors ${textClass}`}
                             >
-                                Productos <ChevronDown className="ml-1 h-4 w-4" />
+                                Productos <ChevronDown className="ml-1 h-4 w-4"/>
                             </button>
 
                             {productDropdownOpen && (
                                 <div className="absolute top-full left-0 w-72 pt-2 animate-fade-in-down">
-                                    <div className="bg-white rounded-md shadow-xl py-2 border border-gray-100 overflow-hidden">
-                                        {PRODUCT_CATEGORIES.map((cat) => (
+                                    <div
+                                        className="bg-white rounded-md shadow-xl py-2 border border-gray-100 overflow-hidden max-h-96 overflow-y-auto">
+                                        {categories.map((cat) => (
                                             <Link
                                                 key={cat.id}
                                                 to={`/productos?cat=${cat.id}`}
@@ -93,7 +139,6 @@ const Navbar: React.FC = () => {
                                 </div>
                             )}
                         </div>
-
                         {/* Services Dropdown */}
                         <div
                             className="relative group h-full flex items-center"
@@ -104,13 +149,14 @@ const Navbar: React.FC = () => {
                                 onClick={() => handleNavigate('/servicios')}
                                 className={`flex items-center font-medium transition-colors ${textClass}`}
                             >
-                                Servicios <ChevronDown className="ml-1 h-4 w-4" />
+                                Servicios <ChevronDown className="ml-1 h-4 w-4"/>
                             </button>
 
                             {serviceDropdownOpen && (
                                 <div className="absolute top-full left-0 w-72 pt-2 animate-fade-in-down">
-                                    <div className="bg-white rounded-md shadow-xl py-2 border border-gray-100 overflow-hidden">
-                                        {SERVICE_TYPES.map((service) => (
+                                    <div
+                                        className="bg-white rounded-md shadow-xl py-2 border border-gray-100 overflow-hidden">
+                                        {serviceTypes.map((service) => (
                                             <Link
                                                 key={service.id}
                                                 to={`/servicios?type=${service.id}`}
@@ -141,7 +187,7 @@ const Navbar: React.FC = () => {
                             onClick={() => setIsOpen(!isOpen)}
                             className={`p-2 rounded-md focus:outline-none ${textClass}`}
                         >
-                            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                            {isOpen ? <X className="h-6 w-6"/> : <Menu className="h-6 w-6"/>}
                         </button>
                     </div>
                 </div>
@@ -165,7 +211,7 @@ const Navbar: React.FC = () => {
                             {productDropdownOpen && (
                                 <div className="pl-6 bg-gray-50 py-2 space-y-1">
                                     <Link to="/productos" className="block px-3 py-2 text-sm font-semibold text-blue-600">Ver Todos</Link>
-                                    {PRODUCT_CATEGORIES.map((cat) => (
+                                    {categories.map((cat) => (
                                         <Link
                                             key={cat.id}
                                             to={`/productos?cat=${cat.id}`}
@@ -190,7 +236,7 @@ const Navbar: React.FC = () => {
                             {serviceDropdownOpen && (
                                 <div className="pl-6 bg-gray-50 py-2 space-y-1">
                                     <Link to="/servicios" className="block px-3 py-2 text-sm font-semibold text-blue-600">Ver Todos</Link>
-                                    {SERVICE_TYPES.map((svc) => (
+                                    {serviceTypes.map((svc) => (
                                         <Link
                                             key={svc.id}
                                             to={`/servicios?type=${svc.id}`}
